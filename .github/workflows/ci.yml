@@ -1,21 +1,22 @@
 name: CI
 
-on:   # event(s) (to trigger workflow)
+on:
   pull_request:
   push:
-    branches: [main]  # main branch code changed
+    branches: [main]
 
-jobs:   # series of jobs to be run on event + the runner they're executed on
+jobs:
   test:
-    runs-on: ubuntu-latest  # runner: GitHub-hosted Ubuntu
+    runs-on: ubuntu-latest
 
-    steps:  # steps can contain actions/dependencies, and (imperative) steps
+    steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      - run: cd nodejs20-se-test-app-2025/app
       - run: npm install
       - run: npm test
 
