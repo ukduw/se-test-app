@@ -16,9 +16,13 @@ jobs:
         with:
           node-version: 20
 
-      - run: cd nodejs20-se-test-app-2025/app
-      - run: npm install
-      - run: npm test
+      - name: Install dependencies
+        working-directory: nodejs20-se-test-app-2025/app
+        run: npm install
+
+      - name: Run tests
+        working-directory: nodejs20-se-test-app-2025/app
+        run: npm test
 
 
 # triggered on PR or push (to main)
